@@ -1,4 +1,4 @@
-FROM hypriot/rpi-alpine
+FROM arm64v8/alpine:3.7
 MAINTAINER Michael Ruettgers <michael@ruettgers.eu>
 
 ENV BUILD_PACKAGES \
@@ -18,7 +18,7 @@ ENV PACKAGES \
   alsa-lib
 
 RUN set -xe && \
-  apk --no-cache update && \
+  cd /tmp && \
   apk --no-cache add ${BUILD_PACKAGES} ${PACKAGES} && \
   git clone --recursive https://github.com/badaix/snapcast.git && \
   cd snapcast && \

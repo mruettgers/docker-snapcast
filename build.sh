@@ -1,4 +1,6 @@
 #!/bin/sh
 
-# Build aarch64 image
-docker build -t mruettgers/rpi-snapcast aarch64/
+set -xe
+
+# Build Raspberry Pi image
+docker build -t mruettgers/rpi-snapcast rpi/

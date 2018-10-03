@@ -17,6 +17,8 @@ ENV PACKAGES \
   libvorbis \
   alsa-lib
 
+COPY qemu-arm-static /usr/bin
+
 RUN set -xe && \
   cd /tmp && \
   apk --no-cache add ${BUILD_PACKAGES} ${PACKAGES} && \

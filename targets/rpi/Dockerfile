@@ -1,4 +1,4 @@
-FROM arm32v6/alpine:3.7
+FROM arm32v7/alpine:3
 MAINTAINER Michael Ruettgers <michael@ruettgers.eu>
 
 ENV BUILD_PACKAGES \
@@ -15,9 +15,9 @@ ENV PACKAGES \
   avahi-libs \
   flac \
   libvorbis \
-  alsa-lib
-
-COPY qemu-arm-static /usr/bin
+  alsa-lib \
+  alsa-utils \
+  alsa-plugins-pulse
 
 RUN set -xe && \
   cd /tmp && \

@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM mruettgers/librespot
 MAINTAINER Michael Ruettgers <michael@ruettgers.eu>
 
 ENV BUILD_PACKAGES \
@@ -9,13 +9,17 @@ ENV BUILD_PACKAGES \
   avahi-dev \
   flac-dev \
   libvorbis-dev \
-  alsa-lib-dev
+  alsa-lib-dev \
+  opus-dev
 
 ENV PACKAGES \
   avahi-libs \
   flac \
   libvorbis \
-  alsa-lib
+  alsa-lib \
+  alsa-utils \
+  alsa-plugins-pulse \
+  opus
 
 RUN set -xe && \
   cd /tmp && \
@@ -24,4 +28,6 @@ RUN set -xe && \
   cd snapcast && \
   make && \
   cp server/snapserver client/snapclient /usr/local/bin && \
-  cd /tmp && rm -rf /tmp/snapcast && apk --no-cache --purge del ${BUILD_PACKAGES}
+  cd .. && rm -rf snapcast && apk --no-cache --purge del ${BUILD_PACKAGES}
+
+CMD ["snapserver"]

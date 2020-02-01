@@ -2,6 +2,6 @@
 
 ## Build
 
-`docker buildx build --platform=linux/arm/v7 -t mruettgers/snapcast .'
+`docker buildx build --platform=linux/amd64,linux/arm/v7 -t mruettgers/snapcast .'
 
 To push to the registry add `--push`.
